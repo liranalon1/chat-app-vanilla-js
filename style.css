@@ -19,7 +19,3 @@ body { background: #e8efef; font-family: Helvetica,sans-serif; font-size: 16px; 
 .controls button{ background: #0174ad; border-radius: 50px; color: white; font-size: 14px; cursor: pointer; }
 .controls button:hover{ background: #006394; }
 .controls ::placeholder { font-size: 15px; font-weight: 300; font-family: Helvetica; color: #9c9c9c; }
-
-@media (max-width: 768px) {
-    .messages { height: calc(100vh - 120px); }
-}
