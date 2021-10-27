@@ -21,5 +21,5 @@ body { background: #e8efef; font-family: Helvetica,sans-serif; font-size: 16px; 
 .controls ::placeholder { font-size: 15px; font-weight: 300; font-family: Helvetica; color: #9c9c9c; }
 
 @media (max-width: 768px) {
-    .messages { height: calc(94vh - 100px); }
+    .messages { height: calc(92vh - 100px); }
 }
