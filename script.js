@@ -79,7 +79,7 @@ function removeTyping(typingName, time){
         console.log('usersArr: ' + usersArr);
       }
     }else{
-      userTyping.innerText = ``;
+      userTyping.innerText = '';
     }
   }, time);
 }
