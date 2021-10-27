@@ -11,21 +11,25 @@ const usersArr = [];
 // events
 window.Chat.onMessage((message) => {
   createNewMsg(message);
+  removeTyping(message.user, 200);
 });
 
 window.Chat.onTyping((username) => {
   handleTyping(username);
+  removeTyping(username, 5000);
 });
 
-msgBtn.addEventListener('click', showMyMsg);
+msgBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  showMyMsg();
+  scrollToBottom();
+});
 
 //  functions
 function showMyMsg(e) {
-  e.preventDefault();
   if (msgInput.value === '') return;
   window.Chat.sendMessage(msgInput.value);
   msgInput.value = '';
-  scrollToBottom();
 }
 
 function createNewMsg(newMsg){
@@ -59,13 +63,25 @@ function setMessageTime(messageBox, dataTime) {
 function handleTyping(typingName) {
   if (!usersArr.includes(typingName)) {
     usersArr.push(typingName);
+    console.log('usersArr: ' + usersArr);
     userTyping.innerText = `${usersArr} is writing...`;
-
-    setTimeout(() => {
-      usersArr.splice(0); // remove all users from usersArr
-      userTyping.innerText = ``;
-    }, 8000);
   }
+}
+
+function removeTyping(typingName, time){
+  setTimeout(() => {
+    if(usersArr.length){
+      // get the index of the value in the array or -1 if it does not exist
+      let index = usersArr.indexOf(typingName);
+      // only try removing it, if it exists in the array
+      if (index !== -1) {
+        usersArr.splice(index, 1);
+        console.log('usersArr: ' + usersArr);
+      }
+    }else{
+      userTyping.innerText = ``;
+    }
+  }, time);
 }
 
 function scrollToBottom() {
