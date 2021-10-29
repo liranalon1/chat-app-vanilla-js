@@ -64,7 +64,7 @@ function handleTyping(typingName) {
   if (!usersArr.includes(typingName)) {
     usersArr.push(typingName);
     console.log('usersArr: ' + usersArr);
-    userTyping.innerText = `${usersArr} is writing...`;
+    userTyping.innerText = `${usersArr} is typing...`;
   }
 }
 
