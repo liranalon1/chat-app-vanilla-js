@@ -63,8 +63,8 @@ function setMessageTime(messageBox, dataTime) {
 function handleTyping(typingName) {
   if (!usersArr.includes(typingName)) {
     usersArr.push(typingName);
-    console.log('usersArr: ' + usersArr);
-    userTyping.innerText = `${usersArr} is typing...`;
+    let checkUsersArrLength = () => usersArr.length > 1 ? "are" : "is";
+    userTyping.innerText = `${usersArr} ${checkUsersArrLength()} typing...`;
   }
 }
 
@@ -76,7 +76,7 @@ function removeTyping(typingName, time){
       // only try removing it, if it exists in the array
       if (index !== -1) {
         usersArr.splice(index, 1);
-        console.log('usersArr: ' + usersArr);
+        //console.log('usersArr: ' + usersArr);
       }
     }else{
       userTyping.innerText = '';
